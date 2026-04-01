@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+
+<!-- SEO Meta Tags -->
+<title>Griffe Pneus | Referência em Pneus em Goiânia</title>
+<meta name="description" content="Rede Griffe Pneus – 22 anos de excelência em pneus em Goiânia, Brasília e Anápolis. Única Rede Oficial Autorizada Pirelli. Alinhamento 3D, balanceamento, suspensão e muito mais." />
+<meta property="og:title" content="Griffe Pneus | Referência em Pneus em Goiânia" />
+<meta property="og:description" content="Rede Griffe Pneus – 22 anos de excelência em pneus em Goiânia, Brasília e Anápolis. Única Rede Oficial Autorizada Pirelli. Alinhamento 3D, balanceamento, suspensão e muito mais." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Griffe Pneus | Referência em Pneus em Goiânia" />
+<meta name="twitter:description" content="Rede Griffe Pneus – 22 anos de excelência em pneus em Goiânia, Brasília e Anápolis. Única Rede Oficial Autorizada Pirelli. Alinhamento 3D, balanceamento, suspensão e muito mais." />
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://super.gbotpro.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=2946');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='QyT32u6uk';
+  var apiBase='https://super.gbotpro.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Griffe<span>Pneus</span></a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#lojas">Lojas</a></li>
+    <li><a href="#contato">Contato</a></li>
+    <li><a href="https://wa.me/5562998264582" class="nav-cta">WhatsApp</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-line"></span>
+      <span class="eyebrow-text">Desde 2003 · Goiânia</span>
+    </div>
+    <h1>A melhor<em>escolha em</em>pneus.</h1>
+    <p class="hero-sub">22 anos de excelência em pneus e serviços automotivos. Somos a única Rede Oficial Autorizada Pirelli em Goiânia, Brasília e Anápolis.</p>
+    <div class="hero-actions">
+      <a href="#contato" class="btn-primary">Peça um orçamento →</a>
+      <a href="https://wa.me/5562998264582" class="btn-ghost">WhatsApp</a>
+    </div>
+  </div>
+  <!-- Tire SVG -->
+  <div class="hero-tire">
+    <svg class="tire-anim" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="200" cy="200" r="182" fill="none" stroke="#1c1c1c" stroke-width="52"/>
+      <circle cx="200" cy="200" r="182" fill="none" stroke="#e02020" stroke-width="2.5" stroke-dasharray="9 13"/>
+      <g opacity=".55">
+        <rect x="186" y="14" width="28" height="16" rx="3" fill="#252525" transform="rotate(0 200 200)"/>
+        <rect x="186" y="14" width="28" height="16" rx="3" fill="#252525" transform="rotate(20 200 200)"/>
+        <rect x="186" y="14" width="28" height="16" rx="3" fill="#252525" transform="rotate(40 200 200)"/>
+        <rect x="186" y="14" width="28" height="16" rx="3" fill="#252525" transform="rotate(60 200 200)"/>
+        <rect x="186" y="14" width="28" height="16" rx="3" fill="#252525" transform="rotate(80 200 200)"/>
+        <rect x="186" y="14" width="28" height="16" rx="3" fill="#252525" transform="rotate(100 200 200)"/>
+        <rect x="186" y="14" width="28" height="16" rx="3" fill="#252525" transform="rotate(120 200 200)"/>
+        <rect x="186" y="14" width="28" height="16" rx="3" fill="#252525" transform="rotate(140 200 200)"/>
+        <rect x="186" y="14" width="28" height="16" rx="3" fill="#252525" transform="rotate(160 200 200)"/>
+        <rect x="186" y="14" width="28" height="16" rx="3" fill="#252525" transform="rotate(180 200 200)"/>
+        <rect x="186" y="14" width="28" height="16" rx="3" fill="#252525" transform="rotate(200 200 200)"/>
+        <rect x="186" y="14" width="28" height="16" rx="3" fill="#252525" transform="rotate(220 200 200)"/>
+        <rect x="186" y="14" width="28" height="16" rx="3" fill="#252525" transform="rotate(240 200 200)"/>
+        <rect x="186" y="14" width="28" height="16" rx="3" fill="#252525" transform="rotate(260 200 200)"/>
+        <rect x="186" y="14" width="28" height="16" rx="3" fill="#252525" transform="rotate(280 200 200)"/>
+        <rect x="186" y="14" width="28" height="16" rx="3" fill="#252525" transform="rotate(300 200 200)"/>
+        <rect x="186" y="14" width="28" height="16" rx="3" fill="#252525" transform="rotate(320 200 200)"/>
+        <rect x="186" y="14" width="28" height="16" rx="3" fill="#252525" transform="rotate(340 200 200)"/>
+      </g>
+      <circle cx="200" cy="200" r="118" fill="#121212" stroke="#242424" stroke-width="2"/>
+      <g stroke="#242424" stroke-width="11" stroke-linecap="round">
+        <line x1="200" y1="100" x2="200" y2="145"/>
+        <line x1="200" y1="255" x2="200" y2="300"/>
+        <line x1="113" y1="150" x2="152" y2="172"/>
+        <line x1="248" y1="228" x2="287" y2="250"/>
+        <line x1="113" y1="250" x2="152" y2="228"/>
+        <line x1="248" y1="172" x2="287" y2="150"/>
+      </g>
+      <circle cx="200" cy="200" r="30" fill="#1a1a1a" stroke="#e02020" stroke-width="2"/>
+      <circle cx="200" cy="200" r="15" fill="#e02020"/>
+    </svg>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-number">22+</span><span class="stat-label">Anos no mercado</span></div>
+  <div class="stat-item"><span class="stat-number">11</span><span class="stat-label">Lojas ativas</span></div>
+  <div class="stat-item"><span class="stat-number">3</span><span class="stat-label">Cidades atendidas</span></div>
+  <div class="stat-item"><span class="stat-number">+5K</span><span class="stat-label">Clientes fiéis</span></div>
+</div>
+
+<!-- SOBRE -->
+<section class="about" id="sobre">
+  <div class="about-grid">
+    <div>
+      <div class="acard">
+        <div class="pirelli-strip">
+          <span style="font-size:2rem">🏆</span>
+          <div class="pirelli-text">
+            <strong>Única Rede Oficial Autorizada Pirelli</strong>
+            <span>Goiânia · Brasília · Anápolis · Aparecida de Goiânia</span>
+          </div>
+        </div>
+        <div class="section-tag"><span class="tag-dot"></span><span class="tag-text">Marcas disponíveis</span></div>
+        <div class="marcas-row">
+          <span class="marca-badge feat">Pirelli</span>
+          <span class="marca-badge feat">Michelin</span>
+          <span class="marca-badge">XBri</span>
+          <span class="marca-badge">LingLong</span>
+          <span class="marca-badge">Speed Max</span>
+          <span class="marca-badge">Continental</span>
+        </div>
+        <div class="section-tag" style="margin-top:1.5rem"><span class="tag-dot"></span><span class="tag-text">Aros disponíveis</span></div>
+        <div class="aros-row">
+          <span class="aro-pill">Aro 13</span><span class="aro-pill">Aro 14</span><span class="aro-pill">Aro 15</span><span class="aro-pill">Aro 16</span><span class="aro-pill">Aro 17</span><span class="aro-pill">Aro 18</span><span class="aro-pill">Aro 19</span><span class="aro-pill">Aro 20</span>
+        </div>
+      </div>
+      <div class="year-badge">
+        <span class="yb-num">Desde 2003</span>
+        <span class="yb-lbl">Fundação em Goiânia, Goiás</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="section-tag"><span class="tag-dot"></span><span class="tag-text">Quem somos</span></div>
+      <h2 class="section-title">Especialistas em pneus há mais de 22 anos</h2>
+      <p>A Rede Griffe Pneus iniciou suas operações em <strong>2003 na cidade de Goiânia</strong> e se consolidou como a maior referência em pneus para veículos de passeio e caminhonetes da região Centro-Oeste.</p>
+      <p>Com <strong>11 lojas distribuídas</strong> entre Goiânia, Anápolis e Brasília, somos a <strong>única Rede Oficial Autorizada Pirelli</strong> em todas as cidades onde atuamos — um reconhecimento pela excelência e profissionalismo ao longo de mais de duas décadas.</p>
+      <p>Nossa missão é ser a solução completa em pneus e serviços automotivos: alinhamento 3D, balanceamento, suspensão, freios e muito mais, sempre com qualidade, honestidade e o melhor preço.</p>
+      <a href="#contato" class="btn-primary" style="margin-top:1.4rem;display:inline-flex">Solicitar orçamento →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="services" id="servicos">
+  <div class="section-tag"><span class="tag-dot"></span><span class="tag-text">O que fazemos</span></div>
+  <h2 class="section-title">Serviços completos</h2>
+  <p class="section-sub">Tudo que seu veículo precisa em um só lugar, com tecnologia de ponta e profissionais qualificados.</p>
+  <div class="services-grid">
+    <div class="svc-card"><div class="svc-icon">🔄</div><div class="svc-title">Troca de Pneus</div><p class="svc-desc">Pneus para carros de passeio, SUVs e caminhonetes. Todas as medidas e marcas em estoque.</p></div>
+    <div class="svc-card"><div class="svc-icon">📐</div><div class="svc-title">Alinhamento 3D</div><p class="svc-desc">Tecnologia 3D para garantir estabilidade, reduzir desgaste e melhorar a economia de combustível.</p></div>
+    <div class="svc-card"><div class="svc-icon">⚖️</div><div class="svc-title">Balanceamento</div><p class="svc-desc">Eliminamos vibrações e garantimos conforto na direção com equipamentos modernos e precisão.</p></div>
+    <div class="svc-card"><div class="svc-icon">🔧</div><div class="svc-title">Suspensão e Freios</div><p class="svc-desc">Diagnóstico completo e manutenção de suspensão, freios, amortecedores e pastilhas.</p></div>
+    <div class="svc-card"><div class="svc-icon">📏</div><div class="svc-title">Geometria e Cambagem</div><p class="svc-desc">Ajuste preciso da geometria do veículo para máxima performance e vida útil dos pneus.</p></div>
+    <div class="svc-card"><div class="svc-icon">🔍</div><div class="svc-title">Scanner Eletrônico</div><p class="svc-desc">Leitura de falhas e diagnóstico completo do sistema eletrônico do seu veículo.</p></div>
+    <div class="svc-card"><div class="svc-icon">🛞</div><div class="svc-title">Conserto de Pneus</div><p class="svc-desc">Reparo de furos, reforma de aros e rodas com qualidade e garantia nos serviços prestados.</p></div>
+    <div class="svc-card"><div class="svc-icon">🔩</div><div class="svc-title">Manutenção Preventiva</div><p class="svc-desc">Calibragem, revisão geral e check-up completo para evitar problemas na estrada.</p></div>
+    <div class="svc-card"><div class="svc-icon">🚙</div><div class="svc-title">Off Road e SUV</div><p class="svc-desc">Pneus Off Road, On Road e mistos para todos os tipos de terreno e utilização.</p></div>
+  </div>
+</section>
+
+<!-- MARCAS -->
+<div class="brands-section">
+  <p class="brands-title">Marcas parceiras</p>
+  <div class="brands-row">
+    <span class="brand-pill red">Pirelli</span>
+    <span class="brand-pill red">Michelin</span>
+    <span class="brand-pill">XBri</span>
+    <span class="brand-pill">LingLong</span>
+    <span class="brand-pill">Speed Max</span>
+    <span class="brand-pill">Continental</span>
+  </div>
+</div>
+
+<!-- LOJAS -->
+<section class="lojas" id="lojas">
+  <div class="section-tag"><span class="tag-dot"></span><span class="tag-text">Onde estamos</span></div>
+  <h2 class="section-title">11 lojas para te atender</h2>
+  <p class="section-sub">Goiânia, Brasília e Anápolis. Encontre a loja mais próxima de você.</p>
+  <div class="lojas-grid">
+    <div class="loja-card">
+      <div class="loja-num">01</div>
+      <div>
+        <div class="loja-name">Setor Central</div>
+        <div class="loja-addr">Av. Independência, 3778 — Setor Central, Goiânia · CEP 74055-010</div>
+        <div class="loja-contact"><a href="tel:6239451111">(62) 3945-1111</a><a href="https://wa.me/5562998264582">WhatsApp</a></div>
+      </div>
+    </div>
+    <div class="loja-card">
+      <div class="loja-num">02</div>
+      <div>
+        <div class="loja-name">Setor Bueno</div>
+        <div class="loja-addr">Av. 85, Nº 3376, Qd. 214, Lt. 10 — Em frente ao Campo do Goiás</div>
+        <div class="loja-contact"><a href="tel:6232819111">(62) 3281-9111</a><a href="https://wa.me/5562999021458">WhatsApp</a></div>
+      </div>
+    </div>
+    <div class="loja-card">
+      <div class="loja-num">03</div>
+      <div>
+        <div class="loja-name">Jardim Goiás</div>
+        <div class="loja-addr">Av. Deputado Jamel Cecílio, 3463 — Jardim Goiás · CEP 74810-100</div>
+        <div class="loja-contact"><a href="tel:6235151111">(62) 3515-1111</a><a href="https://wa.me/5562999287973">WhatsApp</a></div>
+      </div>
+    </div>
+    <div class="loja-card">
+      <div class="loja-num">04</div>
+      <div>
+        <div class="loja-name">Unidade Rua 07</div>
+        <div class="loja-addr">Rua 07, Quadra F-5, Lote 63 — Ao lado da Casa do Bebê</div>
+        <div class="loja-contact"><a href="tel:6230933111">(62) 3093-3111</a><a href="https://wa.me/5562998287973">WhatsApp</a></div>
+      </div>
+    </div>
+    <div class="loja-card">
+      <div class="loja-num">05</div>
+      <div>
+        <div class="loja-name">Praça Walter Santos</div>
+        <div class="loja-addr">Praça Walter Santos, Nº 242 — Goiânia, GO</div>
+        <div class="loja-contact"><a href="tel:6230863111">(62) 3086-3111</a><a href="https://wa.me/5562998274026">WhatsApp</a></div>
+      </div>
+    </div>
+    <div class="loja-card">
+      <div class="loja-num">06+</div>
+      <div>
+        <div class="loja-name">Anápolis e Brasília</div>
+        <div class="loja-addr">1 revenda em Anápolis · 5 revendas em Brasília/DF</div>
+        <div class="loja-contact"><a href="https://wa.me/5562998264582">Consulte pelo WhatsApp</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="section-tag"><span class="tag-dot"></span><span class="tag-text">O que dizem de nós</span></div>
+  <h2 class="section-title">Avaliações dos clientes</h2>
+  <p class="section-sub">Mais de 22 anos construindo confiança, um atendimento de cada vez.</p>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Ótimo atendimento! Melhor pneu que Michelin não existe. Já estive aqui mais de 25 vezes!"</p>
+      <div class="review-author">Cliente fidelizado</div>
+      <div class="review-source">Avaliação verificada · Goiânia</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Melhor loja de serviços de Goiânia. Profissionais honestos, não empurram serviços desnecessários."</p>
+      <div class="review-author">Washington</div>
+      <div class="review-source">Avaliação verificada · Goiânia</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"22 anos realizando apenas o necessário. Confiança total! Equipe que cuida de verdade do seu carro."</p>
+      <div class="review-author">Seguidor Griffe Pneus</div>
+      <div class="review-source">Instagram · @griffepneusoficial</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO / FORMULÁRIO -->
+<section class="contact-section" id="contato">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="section-tag"><span class="tag-dot"></span><span class="tag-text">Contato</span></div>
+      <h2 class="section-title">Fale com um especialista</h2>
+      <p>Preencha o formulário e nossa equipe entrará em contato rapidamente para ajudar você a escolher os melhores pneus para o seu veículo.</p>
+      <div class="info-items">
+        <div class="info-item">
+          <span class="info-icon">📍</span>
+          <div class="info-text">
+            <strong>Loja Principal</strong>
+            <span>Av. Independência, 3778 — Setor Central, Goiânia</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">📞</span>
+          <div class="info-text">
+            <strong>Telefone</strong>
+            <span>(62) 3945-1111</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">💬</span>
+          <div class="info-text">
+            <strong>WhatsApp</strong>
+            <span>+55 (62) 99826-4582</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">📸</span>
+          <div class="info-text">
+            <strong>Instagram</strong>
+            <span>@griffepneusoficial</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-title">Solicitar orçamento</div>
+      <div id="form-container">
+        <div class="form-group">
+          <label>Nome completo</label>
+          <input type="text" id="f-name" placeholder="Seu nome" required/>
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" id="f-email" placeholder="seu@email.com" required/>
+        </div>
+        <div class="form-group">
+          <label>WhatsApp</label>
+          <input type="tel" id="f-phone" placeholder="(62) 9 9999-0000" required/>
+        </div>
+        <div class="form-group">
+          <label>Serviço desejado</label>
+          <select id="f-service">
+            <option value="">Selecione...</option>
+            <option>Troca de Pneus</option>
+            <option>Alinhamento 3D</option>
+            <option>Balanceamento</option>
+            <option>Suspensão e Freios</option>
+            <option>Scanner Eletrônico</option>
+            <option>Outros serviços</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cidade</label>
+          <select id="f-city">
+            <option value="">Selecione...</option>
+            <option>Goiânia</option>
+            <option>Anápolis</option>
+            <option>Brasília / DF</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mensagem (opcional)</label>
+          <textarea id="f-msg" placeholder="Descreva o que precisa..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">Enviar orçamento →</button>
+      </div>
+      <div class="form-success" id="form-success">
+        <span class="success-icon">✅</span>
+        <strong style="font-size:1.2rem;display:block;margin-bottom:.5rem">Orçamento enviado!</strong>
+        <p style="color:var(--muted);font-size:.9rem">Em breve um especialista entrará em contato pelo seu WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <h2>Pronto para trocar seus pneus?</h2>
+  <p>Entre em contato agora e receba um orçamento personalizado para o seu veículo.</p>
+  <a href="https://wa.me/5562998264582" class="btn-white">Chamar no WhatsApp →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <span class="footer-logo">Griffe<span>Pneus</span></span>
+      <p class="footer-tagline">22 anos de excelência em pneus e serviços automotivos. Única Rede Oficial Autorizada Pirelli em Goiânia, Brasília e Anápolis.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Serviços</h4>
+      <ul>
+        <li><a href="#servicos">Troca de Pneus</a></li>
+        <li><a href="#servicos">Alinhamento 3D</a></li>
+        <li><a href="#servicos">Balanceamento</a></li>
+        <li><a href="#servicos">Suspensão</a></li>
+        <li><a href="#servicos">Scanner</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Marcas</h4>
+      <ul>
+        <li><a href="#">Pirelli</a></li>
+        <li><a href="#">Michelin</a></li>
+        <li><a href="#">XBri</a></li>
+        <li><a href="#">LingLong</a></li>
+        <li><a href="#">Speed Max</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="tel:6239451111">(62) 3945-1111</a></li>
+        <li><a href="https://wa.me/5562998264582">WhatsApp</a></li>
+        <li><a href="https://instagram.com/griffepneusoficial">Instagram</a></li>
+        <li><a href="#lojas">Nossas lojas</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Rede Griffe Pneus · Todos os direitos reservados</span>
+    <span>Goiânia · Brasília · Anápolis</span>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/5562998264582" class="wa-float" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<script>
+async function submitForm() {
+  const name = document.getElementById('f-name').value;
+  const email = document.getElementById('f-email').value;
+  const phone = document.getElementById('f-phone').value;
+  const service = document.getElementById('f-service').value;
+  const city = document.getElementById('f-city').value;
+  const msg = document.getElementById('f-msg').value;
+
+  if (!name || !email || !phone) {
+    alert('Por favor, preencha nome, e-mail e WhatsApp.');
+    return;
+  }
+
+  const payload = {
+    contactName: name,
+    contactEmail: email,
+    contactPhone: phone,
+    data: { servico: service, cidade: city, mensagem: msg }
+  };
+
+  try {
+    await fetch('https://super.gbotpro.com/api/webhooks/flow/1904/ab3e80e9879f2e0c5dacee2033e9533c0126809d50628f5cfe9d9ae7e3dee73a', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      mode: 'no-cors'
+    });
+  } catch(e) {}
+
+  document.getElementById('form-container').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+</script>
+</body>
+</html>
