@@ -1,0 +1,195 @@
+/* ===== GLOBAL RESET AND THEME TOKENS ===== */
+    /* Defines the page font, color variables, and smooth scrolling behavior */
+    :root {
+      --bg: #ffffff;
+      --surface: #f7f7f8;
+      --surface-strong: #eeeeef;
+      --text: #111111;
+      --sub: #555555;
+      --muted: #7a7a7a;
+      --border: #e5e5e5;
+      --accent: #111111;
+      --accent-soft: #eef2ff;
+      --success: #0f766e;
+      --warning: #b45309;
+      --danger: #b91c1c;
+      --btn-bg: #111111;
+      --btn-text: #ffffff;
+      --card-shadow: 0 20px 50px rgba(17, 17, 17, 0.08);
+    }
+
+    /* ===== DARK MODE TOKENS ===== */
+    /* Uses user system preference to improve readability in low-light environments */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111111;
+        --surface: #181818;
+        --surface-strong: #242424;
+        --text: #f5f5f5;
+        --sub: #c5c5c5;
+        --muted: #8a8a8a;
+        --border: #2a2a2a;
+        --accent: #ffffff;
+        --accent-soft: #202336;
+        --success: #2dd4bf;
+        --warning: #fbbf24;
+        --danger: #f87171;
+        --btn-bg: #f5f5f5;
+        --btn-text: #111111;
+        --card-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      }
+    }
+
+    /* ===== BASE DOCUMENT STYLES ===== */
+    /* Sets typography, page background, and default readable text rendering */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ===== BODY STYLES ===== */
+    /* Mobile-first body styling with safe viewport spacing handled by section containers */
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    /* ===== FOCUS VISIBLE STYLES ===== */
+    /* Improves keyboard navigation accessibility across buttons, links, and form fields */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 3px solid rgba(59, 130, 246, 0.7);
+      outline-offset: 3px;
+    }
+
+    /* ===== HERO BACKGROUND STYLES ===== */
+    /* Creates a technical tire-inspired radial pattern without external image dependencies */
+    .hero-section {
+      background:
+        radial-gradient(circle at 18% 18%, rgba(15, 118, 110, 0.12), transparent 32%),
+        radial-gradient(circle at 82% 12%, rgba(17, 24, 39, 0.10), transparent 30%),
+        linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+    }
+
+    /* ===== TIRE RING DECORATION ===== */
+    /* Decorative circular shape inspired by tire sidewalls for the hero visual panel */
+    .tire-ring {
+      background:
+        radial-gradient(circle, transparent 0 30%, var(--surface-strong) 31% 36%, transparent 37% 47%, var(--accent) 48% 52%, transparent 53%),
+        conic-gradient(from 0deg, rgba(17, 17, 17, 0.12), rgba(15, 118, 110, 0.20), rgba(17, 17, 17, 0.12));
+      box-shadow: inset 0 0 0 12px rgba(255, 255, 255, 0.08), var(--card-shadow);
+    }
+
+    /* ===== CARD GLASS STYLE ===== */
+    /* Shared card surface styling for tables, calculators, feature cards, and CTA elements */
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--card-shadow);
+    }
+
+    /* ===== BADGE STYLE ===== */
+    /* Compact label style used for tire categories and classification indicators */
+    .classification-badge {
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--sub);
+    }
+
+    /* ===== NAVIGATION MENU TRANSITION ===== */
+    /* Controls mobile navigation expand/collapse animation */
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+
+    /* ===== NAVIGATION MENU OPEN STATE ===== */
+    /* Reveals mobile links when the hamburger button is activated */
+    .mobile-menu.open {
+      max-height: 420px;
+    }
+
+    /* ===== TABLE SCROLLBAR STYLE ===== */
+    /* Makes wide comparison tables easier to use on small screens */
+    .table-scroll {
+      scrollbar-width: thin;
+      scrollbar-color: var(--muted) transparent;
+    }
+
+    /* ===== WEBKIT TABLE SCROLLBAR STYLE ===== */
+    /* Adds subtle scrollbar styling for Chromium and Safari browsers */
+    .table-scroll::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    /* ===== WEBKIT TABLE SCROLLBAR TRACK ===== */
+    /* Keeps horizontal table scrolling visually minimal */
+    .table-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* ===== WEBKIT TABLE SCROLLBAR THUMB ===== */
+    /* Adds a visible but understated drag handle for overflowing tables */
+    .table-scroll::-webkit-scrollbar-thumb {
+      background: var(--muted);
+      border-radius: 999px;
+    }
+
+    /* ===== FAQ ANSWER TRANSITION ===== */
+    /* Smoothly shows and hides FAQ answer blocks */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+
+    /* ===== FAQ ANSWER OPEN STATE ===== */
+    /* Allows expanded FAQ answers to become visible */
+    .faq-answer.open {
+      max-height: 420px;
+    }
+
+    /* ===== RESULT BOX ANIMATION ===== */
+    /* Adds a subtle entrance effect when calculator results are updated */
+    .result-pop {
+      animation: resultPop 0.28s ease;
+    }
+
+    /* ===== RESULT POP KEYFRAMES ===== */
+    /* Keyframes for calculator result feedback animation */
+    @keyframes resultPop {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== PRINT STYLES ===== */
+    /* Simplifies the page for printing tire tables and reference guides */
+    @media print {
+      nav,
+      .no-print,
+      .cta-section {
+        display: none !important;
+      }
+
+      body {
+        background: #ffffff;
+        color: #111111;
+      }
+
+      .info-card {
+        box-shadow: none;
+        border: 1px solid #cccccc;
+      }
+    }
