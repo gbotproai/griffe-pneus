@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- BASE:START (managed by Coding Agent — do not edit) -->
+<base href="/griffe-pneus/">
+<!-- BASE:END -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <meta name="description" content="Página educativa sobre tamanhos, leitura de medidas, índices de carga, classificação de velocidade e tipos de pneus automotivos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+
+<!-- SEO Meta Tags -->
+<title>Modelos</title>
+<meta property="og:title" content="Modelos" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Modelos" />
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://super.gbotpro.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=3820');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='7tbiHFG4';
+  var apiBase='https://super.gbotpro.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ============================================================================ -->
+  <!-- NAVBAR SECTION: Primary navigation for the tire guide page                   -->
+  <!-- Features: Anchor links, mobile menu toggle, responsive layout                -->
+  <!-- Mobile Padding: px-4 py-4 keeps links and logo away from viewport edges      -->
+  <!-- ============================================================================ -->
+  <nav data-section="navbar" class="sticky top-0 z-50 border-b backdrop-blur-xl" style="background: color-mix(in srgb, var(--bg) 88%, transparent); border-color: var(--border);">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 md:px-8 lg:px-12">
+      <a href="#topo" class="flex items-center gap-3 text-sm font-bold tracking-tight" aria-label="Ir para o início">
+        <span class="flex h-10 w-10 items-center justify-center rounded-full" style="background: var(--accent); color: var(--btn-text);">
+          PN
+        </span>
+        <span class="leading-tight">
+          Guia de Pneus<br />
+          <span class="font-medium" style="color: var(--muted);">Tamanhos & Classificações</span>
+        </span>
+      </a>
+
+      <div class="hidden items-center gap-6 md:flex">
+        <a href="#leitura" class="text-sm font-medium hover:opacity-70" style="color: var(--sub);">Como ler</a>
+        <a href="#tamanhos" class="text-sm font-medium hover:opacity-70" style="color: var(--sub);">Tamanhos</a>
+        <a href="#classificacoes" class="text-sm font-medium hover:opacity-70" style="color: var(--sub);">Classificações</a>
+        <a href="#indices" class="text-sm font-medium hover:opacity-70" style="color: var(--sub);">Índices</a>
+        <a href="#faq" class="text-sm font-medium hover:opacity-70" style="color: var(--sub);">Dúvidas</a>
+      </div>
+
+      <button id="nav-menu-toggle" class="nav-menu-toggle inline-flex items-center rounded-lg border px-3 py-2 text-sm font-semibold md:hidden" style="border-color: var(--border);" aria-expanded="false" aria-controls="mobile-menu">
+        Menu
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu md:hidden">
+      <div class="mx-auto grid max-w-7xl gap-2 px-4 pb-4 sm:px-6 md:px-8">
+        <a href="#leitura" class="rounded-lg px-3 py-2 text-sm font-medium" style="background: var(--surface); color: var(--sub);">Como ler medidas</a>
+        <a href="#tamanhos" class="rounded-lg px-3 py-2 text-sm font-medium" style="background: var(--surface); color: var(--sub);">Tabela de tamanhos</a>
+        <a href="#classificacoes" class="rounded-lg px-3 py-2 text-sm font-medium" style="background: var(--surface); color: var(--sub);">Tipos de pneus</a>
+        <a href="#indices" class="rounded-lg px-3 py-2 text-sm font-medium" style="background: var(--surface); color: var(--sub);">Carga e velocidade</a>
+        <a href="#faq" class="rounded-lg px-3 py-2 text-sm font-medium" style="background: var(--surface); color: var(--sub);">Perguntas frequentes</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================================ -->
+  <!-- HERO SECTION: Main landing area introducing automotive tire guidance         -->
+  <!-- Features: Educational headline, CTA anchors, visual tire sidewall card       -->
+  <!-- Mobile Padding: px-4 py-12 ensures h1 and text never touch viewport edges    -->
+  <!-- ============================================================================ -->
+  <section id="topo" data-section="hero" class="hero-section">
+    <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 md:px-8 md:py-16 lg:px-12 lg:py-24">
+      <div class="max-w-2xl">
+        <p class="mb-4 text-xs font-semibold uppercase tracking-[0.18em]" style="color: var(--muted);">Pneus automotivos · Guia rápido</p>
+        <h1 class="text-4xl font-extrabold leading-tight tracking-[-0.04em] sm:text-5xl lg:text-6xl">
+          Entenda tamanhos e classificações de pneus.
+        </h1>
+        <p class="mt-5 max-w-xl text-base sm:text-lg" style="color: var(--sub);">
+          Aprenda a interpretar medidas como <strong>205/55 R16</strong>, comparar categorias de pneus, identificar índices de carga e velocidade, e escolher opções adequadas para carros de passeio, SUVs e uso misto.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="#leitura" class="cta-primary inline-flex items-center justify-center rounded-lg px-5 py-3 text-sm font-bold transition hover:opacity-80" style="background: var(--btn-bg); color: var(--btn-text);">
+            Aprender a ler a medida →
+          </a>
+          <a href="#tamanhos" class="inline-flex items-center justify-center rounded-lg border px-5 py-3 text-sm font-bold transition hover:opacity-80" style="border-color: var(--border); color: var(--text);">
+            Ver tabela de tamanhos
+          </a>
+        </div>
+        <div class="mt-8 grid grid-cols-3 gap-3 sm:max-w-lg">
+          <div class="rounded-xl border p-3" style="border-color: var(--border); background: var(--bg);">
+            <p class="text-2xl font-extrabold">3</p>
+            <p class="text-xs font-medium" style="color: var(--muted);">partes principais na medida</p>
+          </div>
+          <div class="rounded-xl border p-3" style="border-color: var(--border); background: var(--bg);">
+            <p class="text-2xl font-extrabold">A–Y</p>
+            <p class="text-xs font-medium" style="color: var(--muted);">faixas de velocidade</p>
+          </div>
+          <div class="rounded-xl border p-3" style="border-color: var(--border); background: var(--bg);">
+            <p class="text-2xl font-extrabold">DOT</p>
+            <p class="text-xs font-medium" style="color: var(--muted);">data de fabricação</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-card rounded-3xl p-4 sm:p-6">
+        <div class="rounded-2xl p-6" style="background: var(--bg);">
+          <div class="mx-auto flex aspect-square max-w-sm items-center justify-center rounded-full tire-ring">
+            <div class="rounded-2xl border px-6 py-5 text-center" style="border-color: var(--border); background: color-mix(in srgb, var(--bg) 92%, transparent);">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em]" style="color: var(--muted);">Exemplo comum</p>
+              <p class="mt-2 text-4xl font-extrabold tracking-tight">205/55 R16</p>
+              <p class="mt-2 text-sm" style="color: var(--sub);">91V · Radial · Aro 16</p>
+            </div>
+          </div>
+          <div class="mt-6 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-xl p-3 text-center" style="background: var(--surface);">
+              <p class="text-xs font-semibold uppercase" style="color: var(--muted);">Largura</p>
+              <p class="text-xl font-bold">205 mm</p>
+            </div>
+            <div class="rounded-xl p-3 text-center" style="background: var(--surface);">
+              <p class="text-xs font-semibold uppercase" style="color: var(--muted);">Perfil</p>
+              <p class="text-xl font-bold">55%</p>
+            </div>
+            <div class="rounded-xl p-3 text-center" style="background: var(--surface);">
+              <p class="text-xs font-semibold uppercase" style="color: var(--muted);">Aro</p>
+              <p class="text-xl font-bold">16"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- READING SECTION: Explains how to decode tire size numbers                    -->
+  <!-- Features: Step-by-step decoder, interactive input, accessible result panel   -->
+  <!-- Mobile Padding: px-4 py-12 keeps instructional text safely spaced            -->
+  <!-- ============================================================================ -->
+  <section id="leitura" data-section="como-ler" class="border-t" style="border-color: var(--border);">
+    <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-2 md:px-8 md:py-16 lg:px-12">
+      <div>
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.18em]" style="color: var(--muted);">Como ler a lateral</p>
+        <h2 class="text-3xl font-extrabold leading-tight tracking-[-0.03em] sm:text-4xl">
+          O que significa 205/55 R16 91V?
+        </h2>
+        <p class="mt-4 text-base" style="color: var(--sub);">
+          A medida do pneu combina dimensões físicas, tipo de construção e capacidade operacional. Usar uma medida diferente da recomendada no manual pode alterar conforto, consumo, estabilidade e leitura do velocímetro.
+        </p>
+
+        <div class="mt-8 space-y-4">
+          <div class="step flex gap-4 rounded-2xl border p-4" style="border-color: var(--border); background: var(--surface);">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold" style="background: var(--accent); color: var(--btn-text);">1</div>
+            <div>
+              <strong class="block text-base">205 = largura em milímetros</strong>
+              <p class="text-sm" style="color: var(--sub);">É a largura aproximada da banda de rodagem de flanco a flanco.</p>
+            </div>
+          </div>
+
+          <div class="step flex gap-4 rounded-2xl border p-4" style="border-color: var(--border); background: var(--surface);">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold" style="background: var(--accent); color: var(--btn-text);">2</div>
+            <div>
+              <strong class="block text-base">55 = perfil ou altura relativa</strong>
+              <p class="text-sm" style="color: var(--sub);">Indica que a altura lateral corresponde a 55% da largura do pneu.</p>
+            </div>
+          </div>
+
+          <div class="step flex gap-4 rounded-2xl border p-4" style="border-color: var(--border); background: var(--surface);">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold" style="background: var(--accent); color: var(--btn-text);">3</div>
+            <div>
+              <strong class="block text-base">R16 = construção radial e aro 16</strong>
+              <p class="text-sm" style="color: var(--sub);">A letra R significa radial. O número 16 representa o diâmetro da roda em polegadas.</p>
+            </div>
+          </div>
+
+          <div class="step flex gap-4 rounded-2xl border p-4" style="border-color: var(--border); background: var(--surface);">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold" style="background: var(--accent); color: var(--btn-text);">4</div>
+            <div>
+              <strong class="block text-base">91V = carga e velocidade</strong>
+              <p class="text-sm" style="color: var(--sub);">91 corresponde à carga máxima por pneu; V corresponde à velocidade máxima certificada.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-card rounded-3xl p-4 sm:p-6">
+        <div class="rounded-2xl p-5" style="background: var(--bg);">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em]" style="color: var(--muted);">Decodificador rápido</p>
+          <h3 class="mt-2 text-2xl font-extrabold tracking-tight">Digite uma medida</h3>
+          <p class="mt-2 text-sm" style="color: var(--sub);">
+            Exemplo: 175/65 R14, 195/55 R15, 205/55 R16, 225/45 R17.
+          </p>
+
+          <form id="tire-decoder-form" class="mt-6 space-y-4">
+            <label for="tire-size-input" class="block text-sm font-semibold">Medida do pneu</label>
+            <input id="tire-size-input" name="tire_size" type="text" value="205/55 R16" class="w-full rounded-xl border px-4 py-3 text-base" style="border-color: var(--border); background: var(--surface); color: var(--text);" aria-describedby="decoder-help" />
+            <p id="decoder-help" class="text-xs" style="color: var(--muted);">Use o formato largura/perfil Raro. O cálculo é aproximado.</p>
+            <button type="submit" class="w-full rounded-xl px-5 py-3 text-sm font-bold transition hover:opacity-80" style="background: var(--btn-bg); color: var(--btn-text);">
+              Decodificar medida
+            </button>
+          </form>
+
+          <div id="decoder-result" class="mt-6 rounded-2xl border p-4" style="border-color: var(--border); background: var(--surface);" aria-live="polite">
+            <p class="text-sm font-bold">Resultado para 205/55 R16</p>
+            <div class="mt-3 grid gap-3 sm:grid-cols-2">
+              <div>
+                <p class="text-xs uppercase tracking-wide" style="color: var(--muted);">Largura</p>
+                <p class="font-bold">205 mm</p>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wide" style="color: var(--muted);">Perfil</p>
+                <p class="font-bold">55%</p>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wide" style="color: var(--muted);">Aro</p>
+                <p class="font-bold">16 polegadas</p>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wide" style="color: var(--muted);">Altura lateral</p>
+                <p class="font-bold">112,8 mm</p>
+              </div>
+            </div>
+            <p class="mt-4 text-xs" style="color: var(--muted);">Sempre confirme a medida permitida no manual do veículo ou na etiqueta da coluna da porta.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- SIZE TABLE SECTION: Shows common automotive tire sizes and applications      -->
+  <!-- Features: Responsive table, practical vehicle examples, comparison context   -->
+  <!-- Mobile Padding: px-4 py-12 protects table heading and explanatory content    -->
+  <!-- ============================================================================ -->
+  <section id="tamanhos" data-section="tamanhos" style="background: var(--surface);">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:px-8 md:py-16 lg:px-12">
+      <div class="max-w-3xl">
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.18em]" style="color: var(--muted);">Tabela prática</p>
+        <h2 class="text-3xl font-extrabold leading-tight tracking-[-0.03em] sm:text-4xl">
+          Tamanhos comuns de pneus para automóveis
+        </h2>
+        <p class="mt-4" style="color: var(--sub);">
+          As medidas abaixo são exemplos frequentes no mercado brasileiro. A compatibilidade real depende do veículo, roda, suspensão, carga, calibragem e recomendações do fabricante.
+        </p>
+      </div>
+
+      <div class="table-scroll mt-8 overflow-x-auto rounded-3xl border" style="border-color: var(--border); background: var(--bg);">
+        <table class="w-full min-w-[780px] text-left text-sm">
+          <thead style="background: var(--surface-strong);">
+            <tr>
+              <th class="px-5 py-4 font-bold">Medida</th>
+              <th class="px-5 py-4 font-bold">Aro</th>
+              <th class="px-5 py-4 font-bold">Perfil</th>
+              <th class="px-5 py-4 font-bold">Uso comum</th>
+              <th class="px-5 py-4 font-bold">Características</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t" style="border-color: var(--border);">
+              <td class="px-5 py-4 font-bold">175/65 R14</td>
+              <td class="px-5 py-4">14"</td>
+              <td class="px-5 py-4">Alto</td>
+              <td class="px-5 py-4">Hatches compactos</td>
+              <td class="px-5 py-4" style="color: var(--sub);">Bom conforto, custo menor e maior absorção de impactos.</td>
+            </tr>
+            <tr class="border-t" style="border-color: var(--border);">
+              <td class="px-5 py-4 font-bold">185/60 R15</td>
+              <td class="px-5 py-4">15"</td>
+              <td class="px-5 py-4">Médio</td>
+              <td class="px-5 py-4">Compactos e sedãs pequenos</td>
+              <td class="px-5 py-4" style="color: var(--sub);">Equilíbrio entre conforto, estabilidade e consumo.</td>
+            </tr>
+            <tr class="border-t" style="border-color: var(--border);">
+              <td class="px-5 py-4 font-bold">195/55 R15</td>
+              <td class="px-5 py-4">15"</td>
+              <td class="px-5 py-4">Médio-baixo</td>
+              <td class="px-5 py-4">Hatches e sedãs esportivados</td>
+              <td class="px-5 py-4" style="color: var(--sub);">Mais resposta de direção, porém menor absorção de buracos.</td>
+            </tr>
+            <tr class="border-t" style="border-color: var(--border);">
+              <td class="px-5 py-4 font-bold">205/55 R16</td>
+              <td class="px-5 py-4">16"</td>
+              <td class="px-5 py-4">Médio</td>
+              <td class="px-5 py-4">Sedãs médios e hatches maiores</td>
+              <td class="px-5 py-4" style="color: var(--sub);">Muito popular; bom equilíbrio geral para uso urbano e rodoviário.</td>
+            </tr>
+            <tr class="border-t" style="border-color: var(--border);">
+              <td class="px-5 py-4 font-bold">215/60 R17</td>
+              <td class="px-5 py-4">17"</td>
+              <td class="px-5 py-4">Médio-alto</td>
+              <td class="px-5 py-4">SUVs compactos</td>
+              <td class="px-5 py-4" style="color: var(--sub);">Boa altura lateral para conforto e uso misto leve.</td>
+            </tr>
+            <tr class="border-t" style="border-color: var(--border);">
+              <td class="px-5 py-4 font-bold">225/45 R17</td>
+              <td class="px-5 py-4">17"</td>
+              <td class="px-5 py-4">Baixo</td>
+              <td class="px-5 py-4">Carros de maior desempenho</td>
+              <td class="px-5 py-4" style="color: var(--sub);">Maior contato com o solo e visual esportivo; exige mais cuidado.</td>
+            </tr>
+            <tr class="border-t" style="border-color: var(--border);">
+              <td class="px-5 py-4 font-bold">235/55 R18</td>
+              <td class="px-5 py-4">18"</td>
+              <td class="px-5 py-4">Médio</td>
+              <td class="px-5 py-4">SUVs médios</td>
+              <td class="px-5 py-4" style="color: var(--sub);">Capacidade de carga maior e boa estabilidade em estrada.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-6 rounded-2xl border-l-4 p-5" style="border-color: var(--accent); background: var(--bg);">
+        <p class="text-sm" style="color: var(--sub);">
+          <strong style="color: var(--text);">Atenção:</strong> não escolha pneu apenas pelo visual. Alterar largura, perfil ou aro pode afetar seguro, garantia, consumo, suspensão, frenagem e conformidade com normas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- CLASSIFICATION SECTION: Explains different tire types and categories         -->
+  <!-- Features: Category cards, badge labels, practical recommendations            -->
+  <!-- Mobile Padding: px-4 py-12 prevents card content from touching edges         -->
+  <!-- ============================================================================ -->
+  <section id="classificacoes" data-section="classificacoes" class="border-t" style="border-color: var(--border);">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:px-8 md:py-16 lg:px-12">
+      <div class="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.18em]" style="color: var(--muted);">Classificação por uso</p>
+          <h2 class="text-3xl font-extrabold leading-tight tracking-[-0.03em] sm:text-4xl">
+            Diferentes tipos de pneus para diferentes necessidades.
+          </h2>
+          <p class="mt-4" style="color: var(--sub);">
+            A classificação mais útil para o consumidor considera o tipo de uso: urbano, rodoviário, esportivo, SUV, carga leve ou terreno misto. Cada categoria prioriza um conjunto diferente de atributos.
+          </p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <article class="info-card rounded-3xl p-5">
+            <span class="classification-badge inline-flex rounded-full px-3 py-1 text-xs font-bold">Passeio</span>
+            <h3 class="mt-4 text-xl font-extrabold">Pneu convencional</h3>
+            <p class="mt-2 text-sm" style="color: var(--sub);">Focado em conforto, durabilidade e baixo ruído para carros urbanos e uso diário.</p>
+          </article>
+
+          <article class="info-card rounded-3xl p-5">
+            <span class="classification-badge inline-flex rounded-full px-3 py-1 text-xs font-bold">Performance</span>
+            <h3 class="mt-4 text-xl font-extrabold">Pneu esportivo</h3>
+            <p class="mt-2 text-sm" style="color: var(--sub);">Prioriza aderência, frenagem e resposta de direção, geralmente com perfil mais baixo.</p>
+          </article>
+
+          <article class="info-card rounded-3xl p-5">
+            <span class="classification-badge inline-flex rounded-full px-3 py-1 text-xs font-bold">SUV / Crossover</span>
+            <h3 class="mt-4 text-xl font-extrabold">Pneu reforçado</h3>
+            <p class="mt-2 text-sm" style="color: var(--sub);">Projetado para veículos mais pesados, com maior índice de carga e estrutura robusta.</p>
+          </article>
+
+          <article class="info-card rounded-3xl p-5">
+            <span class="classification-badge inline-flex rounded-full px-3 py-1 text-xs font-bold">All Terrain</span>
+            <h3 class="mt-4 text-xl font-extrabold">Uso misto</h3>
+            <p class="mt-2 text-sm" style="color: var(--sub);">Combina desempenho em asfalto e terra leve, comum em SUVs e picapes.</p>
+          </article>
+
+          <article class="info-card rounded-3xl p-5">
+            <span class="classification-badge inline-flex rounded-full px-3 py-1 text-xs font-bold">Run-flat</span>
+            <h3 class="mt-4 text-xl font-extrabold">Rodagem emergencial</h3>
+            <p class="mt-2 text-sm" style="color: var(--sub);">Permite rodar por distância limitada após perda de pressão, quando compatível com o veículo.</p>
+          </article>
+
+          <article class="info-card rounded-3xl p-5">
+            <span class="classification-badge inline-flex rounded-full px-3 py-1 text-xs font-bold">Eco</span>
+            <h3 class="mt-4 text-xl font-extrabold">Baixa resistência</h3>
+            <p class="mt-2 text-sm" style="color: var(--sub);">Desenvolvido para reduzir consumo de combustível e emissões, mantendo segurança.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- INDICES SECTION: Details load index, speed rating, DOT and tire labels       -->
+  <!-- Features: Tables, reference cards, safety-focused explanations               -->
+  <!-- Mobile Padding: px-4 py-12 maintains safe spacing for dense technical data   -->
+  <!-- ============================================================================ -->
+  <section id="indices" data-section="indices" style="background: var(--surface);">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:px-8 md:py-16 lg:px-12">
+      <div class="max-w-3xl">
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.18em]" style="color: var(--muted);">Índices e marcações</p>
+        <h2 class="text-3xl font-extrabold leading-tight tracking-[-0.03em] sm:text-4xl">
+          Carga, velocidade, DOT e outras informações importantes.
+        </h2>
+        <p class="mt-4" style="color: var(--sub);">
+          Além da medida, a lateral do pneu traz códigos que indicam capacidade, limite de velocidade, construção, data de fabricação e certificações.
+        </p>
+      </div>
+
+      <div class="mt-8 grid gap-6 lg:grid-cols-2">
+        <div class="info-card rounded-3xl p-5 sm:p-6">
+          <h3 class="text-2xl font-extrabold">Índice de carga</h3>
+          <p class="mt-2 text-sm" style="color: var(--sub);">Número que indica a carga máxima suportada por pneu quando calibrado corretamente.</p>
+          <div class="table-scroll mt-5 overflow-x-auto rounded-2xl border" style="border-color: var(--border);">
+            <table class="w-full min-w-[420px] text-left text-sm">
+              <thead style="background: var(--surface-strong);">
+                <tr>
+                  <th class="px-4 py-3">Índice</th>
+                  <th class="px-4 py-3">Carga aproximada por pneu</th>
+                  <th class="px-4 py-3">Uso comum</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t" style="border-color: var(--border);">
+                  <td class="px-4 py-3 font-bold">82</td>
+                  <td class="px-4 py-3">475 kg</td>
+                  <td class="px-4 py-3" style="color: var(--sub);">Compactos leves</td>
+                </tr>
+                <tr class="border-t" style="border-color: var(--border);">
+                  <td class="px-4 py-3 font-bold">88</td>
+                  <td class="px-4 py-3">560 kg</td>
+                  <td class="px-4 py-3" style="color: var(--sub);">Hatches e sedãs</td>
+                </tr>
+                <tr class="border-t" style="border-color: var(--border);">
+                  <td class="px-4 py-3 font-bold">91</td>
+                  <td class="px-4 py-3">615 kg</td>
+                  <td class="px-4 py-3" style="color: var(--sub);">Sedãs médios</td>
+                </tr>
+                <tr class="border-t" style="border-color: var(--border);">
+                  <td class="px-4 py-3 font-bold">95</td>
+                  <td class="px-4 py-3">690 kg</td>
+                  <td class="px-4 py-3" style="color: var(--sub);">SUVs compactos</td>
+                </tr>
+                <tr class="border-t" style="border-color: var(--border);">
+                  <td class="px-4 py-3 font-bold">100</td>
+                  <td class="px-4 py-3">800 kg</td>
+                  <td class="px-4 py-3" style="color: var(--sub);">SUVs maiores</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="info-card rounded-3xl p-5 sm:p-6">
+          <h3 class="text-2xl font-extrabold">Classificação de velocidade</h3>
+          <p class="mt-2 text-sm" style="color: var(--sub);">Letra que representa a velocidade máxima certificada para o pneu em condições adequadas.</p>
+          <div class="table-scroll mt-5 overflow-x-auto rounded-2xl border" style="border-color: var(--border);">
+            <table class="w-full min-w-[420px] text-left text-sm">
+              <thead style="background: var(--surface-strong);">
+                <tr>
+                  <th class="px-4 py-3">Símbolo</th>
+                  <th class="px-4 py-3">Velocidade máxima</th>
+                  <th class="px-4 py-3">Perfil de uso</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t" style="border-color: var(--border);">
+                  <td class="px-4 py-3 font-bold">T</td>
+                  <td class="px-4 py-3">190 km/h</td>
+                  <td class="px-4 py-3" style="color: var(--sub);">Uso urbano/rodoviário</td>
+                </tr>
+                <tr class="border-t" style="border-color: var(--border);">
+                  <td class="px-4 py-3 font-bold">H</td>
+                  <td class="px-4 py-3">210 km/h</td>
+                  <td class="px-4 py-3" style="color: var(--sub);">Passeio e sedãs</td>
+                </tr>
+                <tr class="border-t" style="border-color: var(--border);">
+                  <td class="px-4 py-3 font-bold">V</td>
+                  <td class="px-4 py-3">240 km/h</td>
+                  <td class="px-4 py-3" style="color: var(--sub);">Performance moderada</td>
+                </tr>
+                <tr class="border-t" style="border-color: var(--border);">
+                  <td class="px-4 py-3 font-bold">W</td>
+                  <td class="px-4 py-3">270 km/h</td>
+                  <td class="px-4 py-3" style="color: var(--sub);">Alta performance</td>
+                </tr>
+                <tr class="border-t" style="border-color: var(--border);">
+                  <td class="px-4 py-3 font-bold">Y</td>
+                  <td class="px-4 py-3">300 km/h</td>
+                  <td class="px-4 py-3" style="color: var(--sub);">Esportivos premium</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 grid gap-4 md:grid-cols-3">
+        <div class="rounded-3xl border p-5" style="border-color: var(--border); background: var(--bg);">
+          <h3 class="text-lg font-extrabold">DOT</h3>
+          <p class="mt-2 text-sm" style="color: var(--sub);">Código com semana e ano de fabricação. Exemplo: DOT 1425 significa 14ª semana de 2025.</p>
+        </div>
+        <div class="rounded-3xl border p-5" style="border-color: var(--border); background: var(--bg);">
+          <h3 class="text-lg font-extrabold">XL ou Extra Load</h3>
+          <p class="mt-2 text-sm" style="color: var(--sub);">Indica estrutura reforçada para suportar maior carga quando calibrado conforme especificação.</p>
+        </div>
+        <div class="rounded-3xl border p-5" style="border-color: var(--border); background: var(--bg);">
+          <h3 class="text-lg font-extrabold">M+S / 3PMSF</h3>
+          <p class="mt-2 text-sm" style="color: var(--sub);">Marcações relacionadas a lama/neve e desempenho em condições severas de inverno.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- SAFETY SECTION: Gives practical tire selection and maintenance guidance      -->
+  <!-- Features: Checklist layout, safety reminders, maintenance best practices     -->
+  <!-- Mobile Padding: px-4 py-12 keeps checklist readable on phones                -->
+  <!-- ============================================================================ -->
+  <section data-section="seguranca" class="border-t" style="border-color: var(--border);">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:px-8 md:py-16 lg:px-12">
+      <div class="grid gap-8 lg:grid-cols-[1fr_1fr]">
+        <div>
+          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.18em]" style="color: var(--muted);">Escolha correta</p>
+          <h2 class="text-3xl font-extrabold leading-tight tracking-[-0.03em] sm:text-4xl">
+            Critérios para comparar pneus antes da compra.
+          </h2>
+          <p class="mt-4" style="color: var(--sub);">
+            Um pneu adequado não é necessariamente o mais largo ou o mais caro. O ideal é combinar medida correta, índice compatível, tipo de uso e bom estado de conservação.
+          </p>
+        </div>
+
+        <div class="grid gap-4">
+          <div class="flex gap-4 rounded-2xl border p-4" style="border-color: var(--border); background: var(--surface);">
+            <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold" style="background: var(--success); color: #ffffff;">✓</span>
+            <div>
+              <h3 class="font-bold">Confira o manual do veículo</h3>
+              <p class="text-sm" style="color: var(--sub);">Ele informa medidas homologadas, pressão recomendada e condições para carga total.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 rounded-2xl border p-4" style="border-color: var(--border); background: var(--surface);">
+            <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold" style="background: var(--success); color: #ffffff;">✓</span>
+            <div>
+              <h3 class="font-bold">Não reduza índice de carga ou velocidade</h3>
+              <p class="text-sm" style="color: var(--sub);">Use especificação igual ou superior à indicada pelo fabricante.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 rounded-2xl border p-4" style="border-color: var(--border); background: var(--surface);">
+            <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold" style="background: var(--success); color: #ffffff;">✓</span>
+            <div>
+              <h3 class="font-bold">Observe desgaste, bolhas e rachaduras</h3>
+              <p class="text-sm" style="color: var(--sub);">Danos estruturais exigem avaliação profissional e possível substituição imediata.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 rounded-2xl border p-4" style="border-color: var(--border); background: var(--surface);">
+            <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold" style="background: var(--success); color: #ffffff;">✓</span>
+            <div>
+              <h3 class="font-bold">Faça alinhamento, balanceamento e rodízio</h3>
+              <p class="text-sm" style="color: var(--sub);">Esses cuidados aumentam a vida útil e ajudam a manter estabilidade e conforto.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- FAQ SECTION: Answers common questions about tire sizes and classifications   -->
+  <!-- Features: Accessible accordion, concise educational answers                  -->
+  <!-- Mobile Padding: px-4 py-12 prevents FAQ controls from touching screen edges  -->
+  <!-- ============================================================================ -->
+  <section id="faq" data-section="faq" style="background: var(--surface);">
+    <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6 md:px-8 md:py-16 lg:px-12">
+      <div class="text-center">
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.18em]" style="color: var(--muted);">Dúvidas frequentes</p>
+        <h2 class="text-3xl font-extrabold leading-tight tracking-[-0.03em] sm:text-4xl">
+          Perguntas comuns sobre pneus.
+        </h2>
+      </div>
+
+      <div class="mt-8 space-y-3">
+        <div class="rounded-2xl border" style="border-color: var(--border); background: var(--bg);">
+          <button class="faq-toggle flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-bold" aria-expanded="false">
+            Posso trocar o aro do carro por um maior?
+            <span class="text-xl" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer px-5">
+            <p class="pb-5 text-sm" style="color: var(--sub);">
+              Pode ser possível, mas é necessário respeitar medidas equivalentes, espaço na caixa de roda, índice de carga, suspensão e legislação. Consulte o manual e um especialista antes de alterar.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border" style="border-color: var(--border); background: var(--bg);">
+          <button class="faq-toggle flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-bold" aria-expanded="false">
+            Pneu mais largo sempre melhora a aderência?
+            <span class="text-xl" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer px-5">
+            <p class="pb-5 text-sm" style="color: var(--sub);">
+              Não necessariamente. A aderência depende de composto, desenho, temperatura, calibragem, suspensão e piso. Pneus muito largos podem aumentar consumo e aquaplanagem em certas condições.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border" style="border-color: var(--border); background: var(--bg);">
+          <button class="faq-toggle flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-bold" aria-expanded="false">
+            Qual é a diferença entre radial e diagonal?
+            <span class="text-xl" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer px-5">
+            <p class="pb-5 text-sm" style="color: var(--sub);">
+              Pneus radiais, identificados pela letra R, têm lonas dispostas radialmente e são padrão na maioria dos carros modernos. Pneus diagonais são mais comuns em aplicações específicas e antigas.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border" style="border-color: var(--border); background: var(--bg);">
+          <button class="faq-toggle flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-bold" aria-expanded="false">
+            Quando devo substituir os pneus?
+            <span class="text-xl" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer px-5">
+            <p class="pb-5 text-sm" style="color: var(--sub);">
+              Substitua quando o desgaste atingir o TWI, quando houver bolhas, cortes profundos, deformações, ressecamento severo ou perda de desempenho. Pneus muito antigos também exigem avaliação, mesmo com sulco aparente.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- CTA SECTION: Encourages users to review tire specs before buying             -->
+  <!-- Features: Clear next steps, print action, anchor CTA                         -->
+  <!-- Mobile Padding: px-4 py-12 keeps CTA text and buttons safe on small screens  -->
+  <!-- ============================================================================ -->
+  <section data-section="cta" class="cta-section border-t" style="border-color: var(--border);">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:px-8 md:py-16 lg:px-12">
+      <div class="overflow-hidden rounded-3xl p-6 sm:p-8 md:p-10" style="background: var(--accent); color: var(--btn-text);">
+        <div class="grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-center">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] opacity-70">Antes de comprar</p>
+            <h2 class="mt-3 text-3xl font-extrabold leading-tight tracking-[-0.03em] sm:text-4xl">
+              Compare medida, carga, velocidade e tipo de uso.
+            </h2>
+            <p class="mt-4 max-w-2xl opacity-80">
+              Use este guia como referência inicial e confirme sempre as especificações oficiais do seu veículo com um profissional qualificado.
+            </p>
+          </div>
+          <div class="flex flex-col gap-3 sm:flex-row md:flex-col">
+            <button id="print-guide-button" class="no-print rounded-xl bg-white px-5 py-3 text-sm font-bold text-black transition hover:opacity-80">
+              Imprimir guia
+            </button>
+            <a href="#tamanhos" class="rounded-xl border border-white/25 px-5 py-3 text-center text-sm font-bold transition hover:bg-white/10">
+              Rever tamanhos
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================ -->
+  <!-- FOOTER SECTION: Page attribution and quick reference links                   -->
+  <!-- Features: Anchor links only, copyright year fixed to 2026                    -->
+  <!-- Mobile Padding: px-4 py-8 keeps footer content readable and unclipped        -->
+  <!-- ============================================================================ -->
+  <footer data-section="footer" class="border-t" style="border-color: var(--border);">
+    <div class="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 sm:px-6 md:flex-row md:items-center md:justify-between md:px-8 lg:px-12">
+      <div>
+        <p class="text-sm font-bold">Guia de Pneus Automotivos</p>
+        <p class="mt-1 text-xs" style="color: var(--muted);">Conteúdo educativo sobre tamanhos e classificações de pneus.</p>
+      </div>
+      <div class="flex flex-wrap gap-4 text-sm">
+        <a href="#leitura" class="hover:opacity-70" style="color: var(--sub);">Como ler</a>
+        <a href="#tamanhos" class="hover:opacity-70" style="color: var(--sub);">Tamanhos</a>
+        <a href="#classificacoes" class="hover:opacity-70" style="color: var(--sub);">Classificações</a>
+        <a href="#indices" class="hover:opacity-70" style="color: var(--sub);">Índices</a>
+      </div>
+      <p class="text-xs" style="color: var(--muted);">© 2026 Guia de Pneus</p>
+    </div>
+  </footer>
+
+  
+  <script src="script.js"></script>
+</body>
+</html>
